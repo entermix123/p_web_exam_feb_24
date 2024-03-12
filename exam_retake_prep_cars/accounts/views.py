@@ -1,10 +1,7 @@
-from django import forms
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views import generic as views
+
 
 from exam_retake_prep_cars.accounts.forms import ProfileForm, EditProfileForm, DeleteProfileForm
-from exam_retake_prep_cars.accounts.models import Profile
 from exam_retake_prep_cars.cars.models import Car
 from exam_retake_prep_cars.web.views import get_profile
 
