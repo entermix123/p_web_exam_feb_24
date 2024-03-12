@@ -34,8 +34,8 @@
                 <p class="description">Total price: {{ total_cars_price|floatformat:3 }}</p>
                 <!-- Edit/Delete buttons -->
                 <div class="buttons">
-                    <a href="{% url 'edit_profile' pk=profile.pk %}" class="edit-button">Edit</a>
-                    <a href="{% url 'delete_profile' pk=profile.pk %}" class="delete-button">Delete</a>
+                    <a href="{% url 'edit_profile' %}" class="edit-button">Edit</a>
+                    <a href="{% url 'delete_profile' %}" class="delete-button">Delete</a>
                 </div>
             </div>
         </div>

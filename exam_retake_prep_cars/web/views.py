@@ -9,11 +9,9 @@ def get_profile():  # check if profile is logged in
 
 def index(request):
     current_profile = get_profile()
-    user = request.user
 
     context = {
         "profile": current_profile,
-        'user': user,
     }
 
     return render(request, 'index.html', context)

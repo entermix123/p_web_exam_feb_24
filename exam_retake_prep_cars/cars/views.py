@@ -11,9 +11,11 @@ class CatalogueView(views.ListView):
     queryset = Car.objects.all()
     template_name = 'cars/catalogue.html'
 
-    extra_context = {
-        'profile': get_profile(),
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user
+        context['profile'] = profile
+        return context
 
 
 class CarCreateView(views.CreateView):
@@ -22,9 +24,11 @@ class CarCreateView(views.CreateView):
     template_name = 'cars/car-create.html'
     success_url = reverse_lazy('catalogue')
 
-    extra_context = {
-        'profile': get_profile()
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user
+        context['profile'] = profile
+        return context
 
     # Set placeholders in fields
     def get_form(self, form_class=None):
@@ -43,24 +47,26 @@ class CarCreateView(views.CreateView):
 class CarDetailView(views.DetailView):
     queryset = Car.objects.all()
     template_name = 'cars/car-details.html'
-    profile = get_profile()
     success_url = reverse_lazy('catalogue')
 
-    extra_context = {
-        'profile': profile,
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user
+        context['profile'] = profile
+        return context
 
 
 class CarUpdateView(views.UpdateView):
     queryset = Car.objects.all()
-    profile = get_profile()
     fields = ('type', 'model', 'year', 'image_url', 'price')
     template_name = 'cars/car-edit.html'
     success_url = reverse_lazy('catalogue')
 
-    extra_context = {
-        'profile': profile
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user
+        context['profile'] = profile
+        return context
 
 
 class CarDeleteView(ReadOnlyViewMixin, views.DeleteView):
@@ -68,9 +74,11 @@ class CarDeleteView(ReadOnlyViewMixin, views.DeleteView):
     template_name = 'cars/car-delete.html'
     success_url = reverse_lazy('catalogue')
 
-    extra_context = {
-        'profile': get_profile(),
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user
+        context['profile'] = profile
+        return context
 
     # create form, because default views.DeleteView do not return deleted form
     form_class = modelform_factory(Car, fields=['type', 'model', 'year', 'image_url', 'price'])

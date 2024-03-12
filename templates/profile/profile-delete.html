@@ -7,7 +7,7 @@
         <div class="container">
             <h1>Are you sure you want to delete your profile?</h1>
             <!-- Delete Profile Form -->
-            <form action="{% url 'delete_profile' pk=object.pk %}" method="post" id='delete'>
+            <form action="{% url 'delete_profile' %}" method="post" id='delete'>
 
                 <!-- Confirm Button -->
                 <input class="btn submit" type="submit" value="Yes">

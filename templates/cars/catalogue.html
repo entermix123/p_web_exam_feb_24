@@ -2,10 +2,10 @@
 
 
 {% block main_content %}
-    
+
     {% if object_list.count == 0 %}
-    <!-- Display a paragraph: If there are no cars yet-->
-    <p class="no-articles">No cars yet</p>
+        <!-- Display a paragraph: If there are no cars yet-->
+        <p class="no-articles">No cars yet</p>
     {% endif %}
     <!-- Display a card with information about each car (if any)-->
 
@@ -17,19 +17,19 @@
             <div class="image-wrap">
                 <!-- car image -->
                 <img
-                        src="{{ car.image_url}}"
+                        src="{{ car.image_url }}"
                         alt="Rally"
                 />
             </div>
             <!-- car type -->
             <h3>{{ car.type }}</h3>
             <!-- car model -->
-            <h1>{{ car.model}}</h1>
+            <h1>{{ car.model }}</h1>
             <div class="details-buttons">
                 <!-- car details button -->
                 <a href="{% url 'car_details' pk=car.pk %}" class="details-btn">Details</a>
             </div>
         </div>
     {% endfor %}
-{% endblock %}
 
+{% endblock %}
